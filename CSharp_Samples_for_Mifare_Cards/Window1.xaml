@@ -1,0 +1,177 @@
+﻿<Window x:Class="CSharp_Samples_for_Mifare_Cards.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="C#_Sample_for_Mifare_Cards" Height="572" Width="697" WindowStartupLocation="CenterScreen" Name="Window" MaxWidth="750" MaxHeight="572" Loaded="Window1_Loaded" ResizeMode="NoResize" Icon="/CSharp_Samples_for_Mifare_Cards;component/graphics/HID2.gif">
+    <Grid Name="grid1" Width="699">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="518.13*" />
+        </Grid.RowDefinitions>
+
+        <DockPanel Name="DockPanel1" Background="Ivory" ClipToBounds="False" Margin="0,0,10,0">
+            <Grid Height="516" Name="Grid2" Width="509" HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="547*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="57*" />
+                    <RowDefinition Height="104.862*" />
+                    <RowDefinition Height="64.207*" />
+                    <RowDefinition Height="249.931*" />
+                    <RowDefinition Height="40*" />
+                </Grid.RowDefinitions>
+
+                <GroupBox Header="Reader Selection" Margin="10,4,7,4" Name="ReasderSelectionGroupBox1" BorderThickness="2" Opacity="2">
+                    <Button Name="Button3" Width="38" Height="14" IsEnabled="True" Visibility="Hidden"></Button>
+                </GroupBox>
+
+
+                <GroupBox Grid.Row="1" Header="PC/SC Functionality" Margin="10,5,8,64" Name="GroupBox2" BorderBrush="#FFD0D0BF" Grid.RowSpan="2">
+                    <Button Height="23" Name="Button4" Width="41" HorizontalContentAlignment="Center" FlowDirection="LeftToRight" AllowDrop="False" Visibility="Hidden"></Button>
+                </GroupBox>
+                <Label Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="42,21,0,0" Name="Label1" VerticalAlignment="Top" Width="148">Step 1: Reader Connection</Label>
+                <Button Margin="189,21,0,0" Name="sCardEstablishContextButton" Height="23" VerticalAlignment="Top" IsEnabled="True" Grid.Row="1" Click="sCardEstablishContextButton_Click" HorizontalAlignment="Left" Width="130.071">EstablishContext</Button>
+                <Button Height="23" Margin="0,21,45,0" Name="SCardReleaseContextButton" VerticalAlignment="Top" IsEnabled="False" Grid.Row="1" HorizontalAlignment="Right" Width="130" Click="SCardReleaseContextButton_Click">Release Context</Button>
+                <Label Grid.Row="1" Margin="81,48,0,34" Name="Label8" IsEnabled="True" Focusable="False" HorizontalAlignment="Left" Width="109">Card Status</Label>
+                <Label Grid.Row="1" HorizontalAlignment="Left" Margin="42,0,0,2" Name="Label9" Width="167" Height="28" VerticalAlignment="Bottom">Step 3: ICC Connection</Label>
+                <ComboBox Margin="50,21,45,13" Name="selectreadercombobox" IsEnabled="True" SelectedIndex="0" Padding="1" MaxDropDownHeight="60" SelectionChanged="selectreadercombobox_SelectionChanged" />
+                <Button Grid.Row="1" Margin="189,0,0,6" Name="ConnectButton" IsEnabled="False" Height="23" VerticalAlignment="Bottom" Click="ConnectButton_Click" HorizontalAlignment="Left" Width="130.071">Connect</Button>
+                <Button Grid.Row="1" Margin="0,0,45,7" Name="DisconnectButton" HorizontalAlignment="Right" Width="130" IsEnabled="False" Height="23" VerticalAlignment="Bottom" Click="DisconnectButton_Click">Disconnect</Button>
+                <TextBox Margin="189,48,45,34.862" Name="CardStatusTextBox" IsEnabled="True" Grid.Row="1" HorizontalContentAlignment="Center" IsReadOnly="True" IsUndoEnabled="True" VerticalContentAlignment="Center" Background="White"></TextBox>
+                <Label Grid.Row="1" HorizontalAlignment="Left" Margin="42,48,0,33" Name="Label7" Width="49">Step 2:</Label>
+                <GroupBox Header="Mifare Functionality" Margin="10,3,8,14" Name="GroupBox3" Grid.Row="3">
+                    <Button Height="5" Name="Button5" Width="45" Visibility="Hidden"></Button>
+                </GroupBox>
+                <Button IsEnabled="False" Margin="195,56.138,219,0" Name="AuthenticateButton" Height="23" Grid.Row="3" VerticalAlignment="Top" Click="AuthenticateButton_Click">Authenticate</Button>
+                <Button Height="23" HorizontalAlignment="Left" IsEnabled="False" Margin="87,0,0,140.931" Name="ReadButton" VerticalAlignment="Bottom" Width="94" Grid.Row="3" Click="ReadButton_Click">Read</Button>
+                <Button Height="23" IsEnabled="False" Margin="195,86,219,0" Name="WriteButton" VerticalAlignment="Top" Grid.Row="3" Click="WriteButton_Click">Write</Button>
+                <TextBox Grid.Row="3" IsEnabled="False" Margin="89,123,45,104" Name="DataTextBox" KeyDown="DataTextBox_KeyDown" TextChanged="DataTextBox_TextChanged">
+                    <!--<TextBox.ContextMenu>
+                        <ContextMenu />
+                    </TextBox.ContextMenu>-->
+                    <!--<TextBox.InputBindings>
+                        <KeyBinding Command="ApplicationCommands.NotACommand" Key="Insert" Modifiers="Shift"/>
+                        <KeyBinding Command="ApplicationCommands.NotACommand" Key="V" Modifiers="Control"/>
+                    </TextBox.InputBindings>-->
+                </TextBox>
+                <Label Grid.Row="3" HorizontalAlignment="Left" Margin="41,116,0,110" Name="Label2" Width="36">Data</Label>
+                <TextBox Grid.Row="3" HorizontalScrollBarVisibility="Hidden" IsEnabled="True" IsReadOnly="True" Margin="89,0,45,20" Name="LogTextBox" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" Height="80" VerticalAlignment="Bottom" CharacterCasing="Normal" ForceCursor="False" />
+
+                <Label Grid.Row="3" HorizontalAlignment="Left" Margin="41,0,0,42" Name="Label3" Width="36" Height="62.931" VerticalAlignment="Bottom">Logs</Label>
+                <Label HorizontalAlignment="Left" Margin="41,24,0,0" Name="Label4" Width="46" Height="28" Grid.Row="3" VerticalAlignment="Top">Step 5:</Label>
+                <Label Height="28" HorizontalAlignment="Left" Margin="41,56,0,0" Name="Label5" VerticalAlignment="Top" Width="46" Grid.Row="3">Block</Label>
+                <ComboBox AllowDrop="False" Height="23" IsDropDownOpen="False" IsEditable="False" IsEnabled="False" IsReadOnly="False" Margin="88,56,0,0" MaxDropDownHeight="95" Name="BlockComboBox" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectedIndex="-1" StaysOpenOnEdit="False" VerticalAlignment="Top" Grid.Row="3" Width="93" HorizontalAlignment="Left" SelectionChanged="BlockComboBox_SelectionChanged">
+                </ComboBox>
+                <Label Foreground="Red" Margin="0,56.138,52,0" Name="authenticateLabel" Height="23" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Top" Width="163" />
+                <Label HorizontalAlignment="Right" Margin="0,103,45,123" Name="writeLabel" Width="178" Grid.Row="3" Foreground="Red" HorizontalContentAlignment="Right" />
+                <ComboBox Grid.Row="3" Height="23" Margin="195,24,229,0" Name="keynumberComboBox" VerticalAlignment="Top" Visibility="Visible" IsEnabled="False" MaxDropDownHeight="95">
+                    <ComboBoxItem IsSelected="False">00</ComboBoxItem>
+                    <ComboBoxItem>01</ComboBoxItem>
+                    <ComboBoxItem>02</ComboBoxItem>
+                    <ComboBoxItem>03</ComboBoxItem>
+                    <ComboBoxItem>04</ComboBoxItem>
+                    <ComboBoxItem>05</ComboBoxItem>
+                    <ComboBoxItem>06</ComboBoxItem>
+                    <ComboBoxItem>07</ComboBoxItem>
+                    <ComboBoxItem>08</ComboBoxItem>
+                    <ComboBoxItem>09</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
+                    <ComboBoxItem>11</ComboBoxItem>
+                    <ComboBoxItem>12</ComboBoxItem>
+                    <ComboBoxItem>13</ComboBoxItem>
+                    <ComboBoxItem>14</ComboBoxItem>
+                    <ComboBoxItem>15</ComboBoxItem>
+                    <ComboBoxItem>16</ComboBoxItem>
+                    <ComboBoxItem>17</ComboBoxItem>
+                    <ComboBoxItem>18</ComboBoxItem>
+                    <ComboBoxItem>19</ComboBoxItem>
+                    <ComboBoxItem>20</ComboBoxItem>
+                    <ComboBoxItem>21</ComboBoxItem>
+                    <ComboBoxItem>22</ComboBoxItem>
+                    <ComboBoxItem>23</ComboBoxItem>
+                    <ComboBoxItem>24</ComboBoxItem>
+                    <ComboBoxItem>25</ComboBoxItem>
+                    <ComboBoxItem>26</ComboBoxItem>
+                    <ComboBoxItem>27</ComboBoxItem>
+                    <ComboBoxItem>28</ComboBoxItem>
+                    <ComboBoxItem>29</ComboBoxItem>
+                    <ComboBoxItem>30</ComboBoxItem>
+                    <ComboBoxItem>31</ComboBoxItem>
+                </ComboBox>
+                <RadioButton Grid.Row="3" Height="16" Margin="0,30.006,145.535,0" Name="keyRadioButton" VerticalAlignment="Top" IsChecked="True" IsEnabled="True" HorizontalAlignment="Right" Width="69.465">Key_A</RadioButton>
+                <RadioButton Grid.Row="3" Height="16" Margin="0,29,52,0" Name="keRadioButton" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Right" Width="87">Key_B</RadioButton>
+                <Label Grid.Row="3" Margin="41,86,0,0" Name="Label6" HorizontalAlignment="Left" Width="46" Height="23" VerticalAlignment="Top">Step 6:</Label>
+                <Label Grid.Row="3" Height="23" HorizontalAlignment="Right" Margin="0,6,3,0" Name="keyLabel" VerticalAlignment="Top" Width="208" Foreground="Red" FontSize="10"></Label>
+                <GroupBox Grid.Row="2" Header="Reader Functionality" Margin="10,2,8,2" Name="GroupBox1">
+
+                </GroupBox>
+                <ComboBox Grid.Row="2" Margin="171,26,252,16" Name="keynumberloadComboBox" IsEnabled="False" MaxDropDownHeight="95" SelectionChanged="keynumberloadComboBox_SelectionChanged">
+                    <ComboBoxItem IsSelected="False">00</ComboBoxItem>
+                    <ComboBoxItem>01</ComboBoxItem>
+                    <ComboBoxItem>02</ComboBoxItem>
+                    <ComboBoxItem>03</ComboBoxItem>
+                    <ComboBoxItem>04</ComboBoxItem>
+                    <ComboBoxItem>05</ComboBoxItem>
+                    <ComboBoxItem>06</ComboBoxItem>
+                    <ComboBoxItem>07</ComboBoxItem>
+                    <ComboBoxItem>08</ComboBoxItem>
+                    <ComboBoxItem>09</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
+                    <ComboBoxItem>11</ComboBoxItem>
+                    <ComboBoxItem>12</ComboBoxItem>
+                    <ComboBoxItem>13</ComboBoxItem>
+                    <ComboBoxItem>14</ComboBoxItem>
+                    <ComboBoxItem>15</ComboBoxItem>
+                    <ComboBoxItem>16</ComboBoxItem>
+                    <ComboBoxItem>17</ComboBoxItem>
+                    <ComboBoxItem>18</ComboBoxItem>
+                    <ComboBoxItem>19</ComboBoxItem>
+                    <ComboBoxItem>20</ComboBoxItem>
+                    <ComboBoxItem>21</ComboBoxItem>
+                    <ComboBoxItem>22</ComboBoxItem>
+                    <ComboBoxItem>23</ComboBoxItem>
+                    <ComboBoxItem>24</ComboBoxItem>
+                    <ComboBoxItem>25</ComboBoxItem>
+                    <ComboBoxItem>26</ComboBoxItem>
+                    <ComboBoxItem>27</ComboBoxItem>
+                    <ComboBoxItem>28</ComboBoxItem>
+                    <ComboBoxItem>29</ComboBoxItem>
+                    <ComboBoxItem>30</ComboBoxItem>
+                    <ComboBoxItem>31</ComboBoxItem>
+                </ComboBox>
+                <TextBox Grid.Row="2" Margin="0,26,114,15" Name="keyloadTextBox" IsEnabled="False" HorizontalAlignment="Right" Width="92" KeyDown="keyloadTextBox_KeyDown" TextChanged="keyloadTextBox_TextChanged">
+                    <TextBox.ContextMenu>
+                        <ContextMenu />
+                    </TextBox.ContextMenu>
+                    <TextBox.InputBindings>
+                        <KeyBinding Command="ApplicationCommands.NotACommand" Key="V" Modifiers="Control"/>
+                        <KeyBinding Command="ApplicationCommands.NotACommand" Key="Insert" Modifiers="Shift"/>
+                    </TextBox.InputBindings>
+                </TextBox>
+                <Button Grid.Row="2" HorizontalAlignment="Right" Margin="0,25,45,16" Name="loadkeyButton" Width="61" IsEnabled="False" Click="loadkeyButton_Click">Load Key</Button>
+                <Label Grid.Row="2" HorizontalAlignment="Left" Margin="42,18,0,0" Name="Label10" Width="66">Step 4:</Label>
+                <Label Grid.Row="2" HorizontalAlignment="Left" Margin="94,24,0,10" Name="Label11" Width="80">Key Number</Label>
+                <Label Grid.Row="2" Margin="0,26,204,8" Name="Label12" HorizontalAlignment="Right" Width="33.001">Key</Label>
+                <Label Grid.Row="2" HorizontalAlignment="Right" Margin="0,7,3,0" Name="keyloadLabel" Width="208" Height="23" VerticalAlignment="Top" Foreground="Red" FontSize="10"></Label>
+                <Label Grid.Row="4" Margin="5,15.5,8,-14" Name="atrLabel" Foreground="RoyalBlue" FontSize="11" FontFamily="tahoma"></Label>
+                <Label Grid.Row="2" Height="28" HorizontalAlignment="Left" Margin="36,0,0,2" Name="Label13" VerticalAlignment="Bottom" Width="61">(Optional)</Label>
+                <Label Grid.Row="4" Margin="5,0,189,13" Name="uidLabel" Foreground="RoyalBlue"></Label>
+                <Label Grid.Row="3" Height="28" HorizontalAlignment="Left" Margin="117,25.006,0,0" Name="label14" VerticalAlignment="Top" Width="92">Key Number</Label>
+                <Button Grid.Row="3" Height="23" HorizontalAlignment="Right" Margin="0,86,104,0" Name="ClearLogButton" VerticalAlignment="Top" Width="102" Click="ClearLogButton_Click" IsEnabled="False">Clear Logs</Button>
+            </Grid>
+            <Grid Name="Grid3" Width="174">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="58.5*" />
+                    <RowDefinition Height="460.5*" />
+                </Grid.RowDefinitions>
+                <GroupBox Header="Return Values" Margin="0,12,8,64" Name="returnGroupBox" Grid.Row="1">
+                    <Button Height="23" Name="Button1" Width="10" Visibility="Hidden"></Button>
+                </GroupBox>
+                <Image Margin="52,20,46,0" Name="Image1" Stretch="Fill" Source="/CSharp_Samples_for_Mifare_Cards;component/graphics/HID2.gif" Height="42.191" Grid.RowSpan="2" VerticalAlignment="Top" />
+                <Label Grid.Row="1" Margin="-9,0,-7,14" Name="mifarecardtypeLabel" FontSize="11" Foreground="DarkGreen" Height="26" VerticalAlignment="Bottom"></Label>
+                <RichTextBox Grid.Row="1" Margin="5,26.809,15,91" Name="rtb" VerticalScrollBarVisibility="Auto" IsReadOnly="True" />
+                <Button Grid.Row="1" Height="23" Margin="5,0,14,67" Name="clearButton" VerticalAlignment="Bottom" Click="clearButton_Click">Clear</Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
